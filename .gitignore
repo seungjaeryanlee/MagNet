@@ -1,6 +1,8 @@
 # Data
 data/raw/
 data/clean/
+data/magnet.zip
+data/magnet.tar.gz
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
