@@ -44,3 +44,16 @@ pre.code {
     white-space: pre-wrap;
     word-wrap: break-word;
 }
+
+.download-container {
+    display: flex;
+    justify-content: flex-start;
+}
+.download-item {
+    flex-grow: 1;
+    text-align: center;
+    max-width: 25%;
+}
+.download-item img {
+    max-width: 50%;
+}
