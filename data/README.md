@@ -1,6 +1,6 @@
 # Preprocessing Dataset
 
-The raw data should be added to `data/raw/` directory. Then, run `preprocess.py` to preprocess them to dataset format.
+The raw data should be added to `data/raw/` directory. Then, go to `data/` directory and run `preprocess.py` to preprocess them to dataset format.
 
 ```
 python preprocess.py

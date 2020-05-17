@@ -11,7 +11,7 @@ import numpy as np
 from tqdm import tqdm
 
 
-def preprocess(raw_data_dir="data/raw/", clean_data_dir="data/clean/"):
+def preprocess(raw_data_dir="raw/", clean_data_dir="clean/"):
     data_infos = []
     print(f"Loading raw data from '{raw_data_dir}' to and saving clean data to '{clean_data_dir}'...")
     for filename in tqdm(sorted(glob.glob(f"{raw_data_dir}/I*.csv"))):
