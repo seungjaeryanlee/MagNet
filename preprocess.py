@@ -21,8 +21,8 @@ def preprocess(raw_data_dir="data/raw/", clean_data_dir="data/clean/"):
         wave_cond = p.group(4)
 
         # Load CSV pair
-        mat_i = np.loadtxt(open(f"{raw_data_dir}/I(sin_1k_hiB).csv", "rb"), delimiter=",")
-        mat_v = np.loadtxt(open(f"{raw_data_dir}/V(sin_1k_hiB).csv", "rb"), delimiter=",")
+        mat_i = np.loadtxt(open(f"{raw_data_dir}/I({wave_shape}_{wave_freq}_{wave_cond}).csv", "rb"), delimiter=",")
+        mat_v = np.loadtxt(open(f"{raw_data_dir}/V({wave_shape}_{wave_freq}_{wave_cond}).csv", "rb"), delimiter=",")
         assert mat_i.shape == mat_v.shape
         num_samples, sample_length = mat_v.shape
 
@@ -43,7 +43,7 @@ def preprocess(raw_data_dir="data/raw/", clean_data_dir="data/clean/"):
         # Stack vectors into a matrix
         long_vec_i = np.expand_dims(long_vec_i, axis=1)
         long_vec_v = np.expand_dims(long_vec_v, axis=1)
-        clean_mat = np.concatenate((long_vec_i, long_vec_v), axis=1)
+        clean_mat = np.concatenate((long_vec_v, long_vec_i), axis=1)
 
         # Save as CSV
         np.savetxt(
