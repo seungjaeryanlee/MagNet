@@ -1,0 +1,46 @@
+a {
+    text-decoration: none;
+    transition: 0.3s;
+    color: #e59400;
+}
+a:hover {
+    color: #b27300;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.front-section {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.news-date {
+    font-weight: bold;
+}
+.news-date::after {
+    content: ": ";
+}
+
+pre.bibtex {
+    background-color: #eee;
+    border: 1px solid #aaa;
+    padding: 10px;
+    width: 90%;
+    font-family: Consolas, Monaco, monospace;
+    margin: 0 auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre.code {
+    background-color: #eee;
+    border: 1px solid #aaa;
+    padding: 10px;
+    width: 90%;
+    font-family: Consolas, Monaco, monospace;
+    margin: 0 auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
