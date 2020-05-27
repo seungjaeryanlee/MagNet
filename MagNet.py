@@ -78,7 +78,8 @@ scalogram = np.zeros([data_size, image_size, image_size])
 for index, row in V.iterrows():
     [cwtmatr, frequencies] = pywt.cwt(row, scales, wave_name, sample_rate)
     scalogram[index:, :, ] = resize(abs(cwtmatr), (image_size, image_size))
-    print(f"{index} finished")
+    if index % 100 == 0:
+        print(f"Index {index} finished")
 
 #%%========== Config the Neural Network ======================================
 # function to count number of parameters
