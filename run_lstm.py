@@ -17,9 +17,9 @@ import wandb
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
-        self.lstm = nn.LSTM(1, 128, num_layers=1, batch_first=True, bidirectional=True)
+        self.lstm = nn.LSTM(1, 42, num_layers=1, batch_first=True, bidirectional=True)
         self.fc_layers = nn.Sequential(
-            nn.Linear(256, 8),
+            nn.Linear(84, 8),
             nn.ReLU(),
             nn.Linear(8, 1)
         )
