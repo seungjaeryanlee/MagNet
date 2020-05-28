@@ -151,6 +151,7 @@ def main():
     y_meas = torch.cat(y_meas, dim=0)
     y_pred = torch.cat(y_pred, dim=0)
     print(f"Test Loss: {F.mse_loss(y_meas, y_pred).item() / len(test_dataset):.8f}")
+    wandb.log({"test/loss": F.mse_loss(y_meas, y_pred).item() / len(test_dataset)})
 
     # Predicton vs Target Plot
     fig, ax = plt.subplots(1, 1)
