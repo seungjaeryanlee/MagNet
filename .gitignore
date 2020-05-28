@@ -1,6 +1,8 @@
 # Scalogram and Labels
-dataset.in.npy
-dataset.out.npy
+dataset.wavelet.in.npy
+dataset.wavelet.out.npy
+dataset.conv1d.in.npy
+dataset.conv1d.out.npy
 
 # W&B
 wandb/
