@@ -107,8 +107,8 @@ def main():
 
     # Setup dataset and dataloader
     # NOTE(seungjaeryanlee): Load saved dataset for speed
-    dataset = get_dataset()
-    # dataset = load_dataset()
+    # dataset = get_dataset()
+    dataset = load_dataset()
     train_size = int(0.6 * len(dataset))
     valid_size = int(0.2 * len(dataset))
     test_size = len(dataset) - train_size - valid_size
