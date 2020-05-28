@@ -121,10 +121,9 @@ def main():
     valid_size = int(0.2 * len(dataset))
     test_size = len(dataset) - train_size - valid_size
     train_dataset, valid_dataset, test_dataset = torch.utils.data.random_split(dataset, [train_size, valid_size, test_size])
-    batch_size = 64
-    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
-    valid_loader = torch.utils.data.DataLoader(valid_dataset, batch_size=batch_size, shuffle=False)
-    test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=CONFIG.BATCH_SIZE, shuffle=True)
+    valid_loader = torch.utils.data.DataLoader(valid_dataset, batch_size=CONFIG.BATCH_SIZE, shuffle=False)
+    test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=CONFIG.BATCH_SIZE, shuffle=False)
 
     # Setup neural network and optimizer
     net = Net().double()
@@ -136,7 +135,7 @@ def main():
     wandb.watch(net)
 
     # Training
-    for epoch_i in range(1, 20+1):
+    for epoch_i in range(1, CONFIG.NUM_EPOCH+1):
         # Train for one epoch
         epoch_train_loss = 0
         for inputs, labels in train_loader:
