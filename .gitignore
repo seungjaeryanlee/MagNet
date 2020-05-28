@@ -3,6 +3,8 @@ dataset.wavelet.in.npy
 dataset.wavelet.out.npy
 dataset.conv1d.in.npy
 dataset.conv1d.out.npy
+dataset.lstm.in.npy
+dataset.lstm.out.npy
 
 # W&B
 wandb/
