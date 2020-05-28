@@ -113,6 +113,11 @@ def main():
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
 
+    # Setup CPU or GPU
+    if CONFIG.USE_GPU and not torch.cuda.is_available():
+        raise ValueError("GPU not detected but CONFIG.USE_GPU is set to True.")
+    device = torch.device("cuda" if CONFIG.USE_GPU else "cpu")
+
     # Setup dataset and dataloader
     # NOTE(seungjaeryanlee): Load saved dataset for speed
     # dataset = get_dataset()
@@ -121,12 +126,13 @@ def main():
     valid_size = int(0.2 * len(dataset))
     test_size = len(dataset) - train_size - valid_size
     train_dataset, valid_dataset, test_dataset = torch.utils.data.random_split(dataset, [train_size, valid_size, test_size])
-    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=CONFIG.BATCH_SIZE, shuffle=True)
-    valid_loader = torch.utils.data.DataLoader(valid_dataset, batch_size=CONFIG.BATCH_SIZE, shuffle=False)
-    test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=CONFIG.BATCH_SIZE, shuffle=False)
+    kwargs = {'num_workers': 1, 'pin_memory': True} if CONFIG.USE_GPU else {}
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=CONFIG.BATCH_SIZE, shuffle=True, **kwargs)
+    valid_loader = torch.utils.data.DataLoader(valid_dataset, batch_size=CONFIG.BATCH_SIZE, shuffle=False, **kwargs)
+    test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=CONFIG.BATCH_SIZE, shuffle=False, **kwargs)
 
     # Setup neural network and optimizer
-    net = Net().double()
+    net = Net().double().to(device)
     criterion = nn.MSELoss()
     optimizer = optim.Adam(net.parameters(), lr=0.001)
 
@@ -140,8 +146,8 @@ def main():
         epoch_train_loss = 0
         for inputs, labels in train_loader:
             optimizer.zero_grad()
-            outputs = net(inputs)
-            loss = criterion(outputs, labels)
+            outputs = net(inputs.to(device))
+            loss = criterion(outputs, labels.to(device))
             loss.backward()
             optimizer.step()
 
@@ -151,8 +157,8 @@ def main():
         with torch.no_grad():
             epoch_valid_loss = 0
             for inputs, labels in valid_loader:
-                outputs = net(inputs)
-                loss = criterion(outputs, labels)
+                outputs = net(inputs.to(device))
+                loss = criterion(outputs, labels.to(device))
 
                 epoch_valid_loss += loss.item()
 
@@ -170,18 +176,18 @@ def main():
     y_pred = []
     with torch.no_grad():
         for inputs, labels in test_loader:
-            y_pred.append(net(inputs))
-            y_meas.append(labels)
+            y_pred.append(net(inputs.to(device)))
+            y_meas.append(labels.to(device))
 
     y_meas = torch.cat(y_meas, dim=0)
     y_pred = torch.cat(y_pred, dim=0)
-    print(f"Test Loss: {F.mse_loss(y_meas, y_pred) / len(test_dataset):.8f}")
+    print(f"Test Loss: {F.mse_loss(y_meas, y_pred).item() / len(test_dataset):.8f}")
 
     # Predicton vs Target Plot
     fig, ax = plt.subplots(1, 1)
     fig.set_size_inches(8, 8)
-    ax.scatter(y_meas, y_pred, label="Prediction")
-    ax.plot(y_meas, y_meas, 'k--', label="Target")
+    ax.scatter(y_meas.cpu().numpy(), y_pred.cpu().numpy(), label="Prediction")
+    ax.plot(y_meas.cpu().numpy(), y_meas.cpu().numpy(), 'k--', label="Target")
     ax.grid(True)
     ax.legend()
     wandb.log({"prediction_vs_target": wandb.Image(fig)})
