@@ -71,7 +71,7 @@ def load_dataset(in_filename="dataset.lstm.in.npy", out_filename="dataset.lstm.o
 
 def main():
     # Load Configuration
-    YAML_CONFIG = OmegaConf.load("conv1d.yaml")
+    YAML_CONFIG = OmegaConf.load("lstm.yaml")
     CLI_CONFIG = OmegaConf.from_cli()
     CONFIG = OmegaConf.merge(YAML_CONFIG, CLI_CONFIG)
 
