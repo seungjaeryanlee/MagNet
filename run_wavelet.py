@@ -45,6 +45,10 @@ class Net(nn.Module):
         return x
 
 
+def count_parameters(model):
+    return sum(p.numel() for p in model.parameters() if p.requires_grad)
+
+
 def get_dataset(data_length=1000, sample_rate=2e-6):
     # Load CSV Files
     # TODO: Use numpy instead of pandas
@@ -135,6 +139,8 @@ def main():
     net = Net().double().to(device)
     criterion = nn.MSELoss()
     optimizer = optim.Adam(net.parameters(), lr=0.001)
+    # Log number of parameters
+    CONFIG.NUM_PARAMETERS = count_parameters(net)
 
     # Setup wandb
     wandb.init(project="MagNet", config=CONFIG)
