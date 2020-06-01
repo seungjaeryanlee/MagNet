@@ -1,33 +1,20 @@
 # MagNet
 
+![wandb](https://img.shields.io/badge/wandb-metric-yellow)
+
+MagNet is a large-scale dataset designed to enable researchers modeling magnetic core loss using machine learning to accelerate the design process of power electronics. The dataset contains a large amount of voltage and current data of different magnetic components with different shapes of waveforms and different properties measured in the real world. Researchers may use these data as pairs of excitations and responses to build up dynamic magnetic models or calculate the core loss to derive static models.
+
+
+
 ```
 📂 docs                 # Code for the website
-📂 data                 # Folder for data-related tasks
-  📂 raw                # Raw Data collected
-  📂 clean              # Data formatted using `preprocess.py`
-  📃 preprocess.py      # Script for preprocessing and reformatting data
+📂 data                 # Folder for data preprocessing
 ```
 
-## Website Roadmap
+## Algorithms
 
-- [x] Create prototype website
-- [ ] Finalize basic content
-- [ ] Decide on a website format
-  - Single-page, pure-HTML
-    - [MNIST](http://yann.lecun.com/exdb/mnist/)
-    - [PASCAL VOC](http://host.robots.ox.ac.uk/pascal/VOC/)
-    - [CIFAR-100](https://www.cs.toronto.edu/~kriz/cifar.html)
-  - Single-page, stylized
-     - [VoxCeleb](http://www.robots.ox.ac.uk/~vgg/data/voxceleb/)
-     - [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
-     - [SQuAD](https://rajpurkar.github.io/SQuAD-explorer/)
-  - Multi-page
-    - [ImageNet](http://www.image-net.org/)
-    - [GLUE Benchmark](https://gluebenchmark.com/)
-- [ ] Prettify website
+- [x] Fully Connected Layer: `run_fc.py`, `fc.yaml`
+- [x] 1D Convolutional Layer: `run_conv1d.py`, `conv1d.yaml`
+- [x] Wavelet Transform + Conv2D: `run_wavelet.py`, `wavelet.yaml`
+- [x] LSTM: `lstm.py`, `lstm.yaml`
 
-## Content Roadmap
-
-- [ ] Create boilerplate code for...
-  - [ ] PyTorch
-  - [ ] TensorFlow
