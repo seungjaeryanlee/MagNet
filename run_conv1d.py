@@ -18,22 +18,22 @@ class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
         self.conv_layers = nn.Sequential(
-            nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=2),
-            nn.BatchNorm2d(32),
+            nn.Conv1d(1, 32, kernel_size=3, stride=1, padding=2),
+            nn.BatchNorm1d(32),
             nn.ReLU(),
-            nn.AvgPool2d(kernel_size=2, stride=2),
-            nn.Conv2d(32, 32, kernel_size=3, stride=1, padding=2),
-            nn.BatchNorm2d(32),
+            nn.AvgPool1d(kernel_size=2, stride=2),
+            nn.Conv1d(32, 32, kernel_size=3, stride=1, padding=2),
+            nn.BatchNorm1d(32),
             nn.ReLU(),
-            nn.AvgPool2d(kernel_size=2, stride=2),
-            nn.Conv2d(32, 16, kernel_size=3, stride=1, padding=2),
-            nn.BatchNorm2d(16),
+            nn.AvgPool1d(kernel_size=2, stride=2),
+            nn.Conv1d(32, 16, kernel_size=3, stride=1, padding=2),
+            nn.BatchNorm1d(16),
             nn.ReLU(),
-            nn.AvgPool2d(kernel_size=2, stride=2),
+            nn.AvgPool1d(kernel_size=2, stride=2),
             # nn.Dropout(),
         )
         self.fc_layers = nn.Sequential(
-            nn.Linear(256, 8),
+            nn.Linear(2016, 8),
             nn.ReLU(),
             nn.Linear(8, 1)
         )
@@ -64,40 +64,23 @@ def get_dataset(data_length=1000, sample_rate=2e-6):
     I = pd.concat([I_sin_5k , I_tri_5k , I_trap_5k], ignore_index=True)
     V = pd.concat([V_sin_5k , V_tri_5k , V_trap_5k], ignore_index=True)
 
-    # Compute scalograms
-    wave_name = 'cgau8'
-    total_scale = 30
-    fc = pywt.central_frequency(wave_name)
-    fmax = 10e3
-    cparam = (1 / sample_rate) / fmax * fc * total_scale
-    scales = cparam / np.arange(total_scale, 1, -1)
-
-    data_size = I.shape[0]
-    image_size = 24
-    scalogram = np.zeros([data_size, image_size, image_size])
-    for index, row in V.iterrows():
-        cwtmatr, _ = pywt.cwt(row, scales, wave_name, sample_rate)
-        scalogram[index] = resize(abs(cwtmatr), (image_size, image_size))
-        if index % 100 == 0:
-            print(f"Index {index} finished")
-
     # Compute labels
     P = V * I
     t = np.arange(0, (data_length-0.5) * sample_rate, sample_rate)
     Loss_meas = np.trapz(P, t, axis=1) / (sample_rate * data_length)
 
     # Reshape data
-    in_tensors = torch.from_numpy(scalogram).view(-1, 1, 24, 24)
+    in_tensors = torch.from_numpy(V.to_numpy()).view(-1, 1, data_length)
     out_tensors = torch.from_numpy(Loss_meas).view(-1, 1)
 
     # Save data as CSV
-    np.save("dataset.wavelet.in.npy", in_tensors.numpy())
-    np.save("dataset.wavelet.out.npy", out_tensors.numpy())
+    np.save("dataset.conv1d.in.npy", in_tensors.numpy())
+    np.save("dataset.conv1d.out.npy", out_tensors.numpy())
 
     return torch.utils.data.TensorDataset(in_tensors, out_tensors)
 
 
-def load_dataset(in_filename="dataset.wavelet.in.npy", out_filename="dataset.wavelet.out.npy"):
+def load_dataset(in_filename="dataset.conv1d.in.npy", out_filename="dataset.conv1d.out.npy"):
     in_tensors = torch.from_numpy(np.load(in_filename))
     out_tensors = torch.from_numpy(np.load(out_filename))
 
@@ -106,7 +89,7 @@ def load_dataset(in_filename="dataset.wavelet.in.npy", out_filename="dataset.wav
 
 def main():
     # Load Configuration
-    YAML_CONFIG = OmegaConf.load("wavelet.yaml")
+    YAML_CONFIG = OmegaConf.load("conv1d.yaml")
     CLI_CONFIG = OmegaConf.from_cli()
     CONFIG = OmegaConf.merge(YAML_CONFIG, CLI_CONFIG)
 

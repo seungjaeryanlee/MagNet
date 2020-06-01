@@ -1,6 +1,6 @@
-# Scalogram and Labels
-dataset.in.npy
-dataset.out.npy
+# Saved Datasets
+dataset.*.in.npy
+dataset.*.out.npy
 
 # W&B
 wandb/
