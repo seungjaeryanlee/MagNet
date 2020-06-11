@@ -13,6 +13,8 @@ import torch.nn.functional as F
 import torch.optim as optim
 import wandb
 
+import analysis
+
 
 class Net(nn.Module):
     def __init__(self):
@@ -190,14 +192,12 @@ def main():
     print(f"Test Loss: {F.mse_loss(y_meas, y_pred).item() / len(test_dataset):.8f}")
     wandb.log({"test/loss": F.mse_loss(y_meas, y_pred).item() / len(test_dataset)})
 
-    # Predicton vs Target Plot
-    fig, ax = plt.subplots(1, 1)
-    fig.set_size_inches(8, 8)
-    ax.scatter(y_meas.cpu().numpy(), y_pred.cpu().numpy(), label="Prediction")
-    ax.plot(y_meas.cpu().numpy(), y_meas.cpu().numpy(), 'k--', label="Target")
-    ax.grid(True)
-    ax.legend()
-    wandb.log({"prediction_vs_target": wandb.Image(fig)})
+    # Analysis
+    wandb.log({
+        "test/prediction_vs_target": wandb.Image(analysis.get_scatter_plot(y_pred, y_meas)),
+        "test/prediction_vs_target_histogram": wandb.Image(analysis.get_two_histograms(y_pred, y_meas)),
+        "test/error_histogram": wandb.Image(analysis.get_error_histogram(y_pred, y_meas)),
+    })
 
 
 if __name__ == "__main__":
