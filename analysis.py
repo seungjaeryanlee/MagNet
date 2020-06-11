@@ -28,5 +28,6 @@ def get_two_histograms(y_pred, y_meas):
 def get_error_histogram(y_pred, y_meas):
     fig, ax = plt.subplots(1, 1)
     ax.hist(y_pred.cpu().numpy() - y_meas.cpu().numpy(), bins=30)
+    ax.axvline(x=0, color='k', linewidth=2)
 
     return fig
