@@ -75,7 +75,7 @@ def load_dataset(in_filename="dataset.fc.in.npy", out_filename="dataset.fc.out.n
 
 def main():
     # Load Configuration
-    YAML_CONFIG = OmegaConf.load("conv1d.yaml")
+    YAML_CONFIG = OmegaConf.load("fc.yaml")
     CLI_CONFIG = OmegaConf.from_cli()
     CONFIG = OmegaConf.merge(YAML_CONFIG, CLI_CONFIG)
 
@@ -107,7 +107,7 @@ def main():
     # Setup neural network and optimizer
     net = Net().double().to(device)
     criterion = nn.MSELoss()
-    optimizer = optim.Adam(net.parameters(), lr=0.001)
+    optimizer = optim.Adam(net.parameters(), lr=CONFIG.LR)
     # Log number of parameters
     CONFIG.NUM_PARAMETERS = count_parameters(net)
 

@@ -109,7 +109,7 @@ def main():
     # Setup neural network and optimizer
     net = Net().double().to(device)
     criterion = nn.MSELoss()
-    optimizer = optim.Adam(net.parameters(), lr=0.001)
+    optimizer = optim.Adam(net.parameters(), lr=CONFIG.LR)
     # Log number of parameters
     CONFIG.NUM_PARAMETERS = count_parameters(net)
 
