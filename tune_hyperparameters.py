@@ -1,5 +1,6 @@
 from omegaconf import OmegaConf
 import optuna
+from optuna.samplers import TPESampler
 
 from run_lstm import main as lstm_main
 
@@ -21,8 +22,9 @@ def optimize(trial):
 
 
 def main():
-    study = optuna.create_study(direction="minimize")
-    study.optimize(optimize, n_trials=5)
+    sampler = TPESampler(seed=1)
+    study = optuna.create_study(direction="minimize", sampler=sampler)
+    study.optimize(optimize, n_trials=3)
 
 
 if __name__ == "__main__":
