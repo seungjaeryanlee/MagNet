@@ -75,12 +75,7 @@ def load_dataset(in_filename="dataset.lstm.in.npy", out_filename="dataset.lstm.o
     return torch.utils.data.TensorDataset(in_tensors, out_tensors)
 
 
-def main():
-    # Load Configuration
-    YAML_CONFIG = OmegaConf.load("lstm.yaml")
-    CLI_CONFIG = OmegaConf.from_cli()
-    CONFIG = OmegaConf.merge(YAML_CONFIG, CLI_CONFIG)
-
+def main(CONFIG):
     # Reproducibility
     random.seed(CONFIG.SEED)
     np.random.seed(CONFIG.SEED)
@@ -114,7 +109,7 @@ def main():
     CONFIG.NUM_PARAMETERS = count_parameters(net)
 
     # Setup wandb
-    wandb.init(project="MagNet", config=CONFIG)
+    wandb.init(project="MagNet", config=OmegaConf.to_container(CONFIG), reinit=True)
     wandb.watch(net)
 
     # Training
@@ -158,8 +153,9 @@ def main():
 
     y_meas = torch.cat(y_meas, dim=0)
     y_pred = torch.cat(y_pred, dim=0)
-    print(f"Test Loss: {F.mse_loss(y_meas, y_pred).item() / len(test_dataset):.8f}")
-    wandb.log({"test/loss": F.mse_loss(y_meas, y_pred).item() / len(test_dataset)})
+    test_mse_loss = F.mse_loss(y_meas, y_pred).item() / len(test_dataset)
+    print(f"Test Loss: {test_mse_loss:.8f}")
+    wandb.log({"test/loss": test_mse_loss})
 
     # Analysis
     wandb.log({
@@ -168,6 +164,17 @@ def main():
         "test/error_histogram": wandb.Image(analysis.get_error_histogram(y_pred, y_meas)),
     })
 
+    # Close wandb
+    wandb.join()
+
+    # Used in `tune_hyperparameters.py`
+    return test_mse_loss
+
 
 if __name__ == "__main__":
-    main()
+    # Load Configuration
+    YAML_CONFIG = OmegaConf.load("lstm.yaml")
+    CLI_CONFIG = OmegaConf.from_cli()
+    CONFIG = OmegaConf.merge(YAML_CONFIG, CLI_CONFIG)
+
+    main(CONFIG)
