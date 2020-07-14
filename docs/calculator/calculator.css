@@ -1,0 +1,19 @@
+.front-section {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.calculator-container {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.calculator {
+    margin: 0 auto;
+    text-align: center;
+    border-collapse: collapse;
+}
+.calculator td, .calculator th {
+    border: 1px solid #999;
+    padding: 0.25em;
+}
