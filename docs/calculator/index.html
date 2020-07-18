@@ -32,20 +32,20 @@
           <tbody>
             <tr>
               <td>Input Parameters</td>
-              <td>Duty Ratio ($D$)</td>
+              <td class="B2">Duty Ratio ($D$)</td>
               <td><input type="text" class="C2"></td>
-              <td>Number of Phases ($M$)</td>
+              <td class="D2">Number of Phases ($M$)</td>
               <td><input type="text" class="E2"></td>
-              <td>Number of Turns per Winding ($N$)</td>
+              <td class="F2">Number of Turns per Winding ($N$)</td>
               <td><input type="text" class="G2"></td>
             </tr>
             <tr>
               <td>Dependent</td>
-              <td>Inductance Bosting Factor</td>
+              <td class="B3">Inductance Bosting Factor</td>
               <td class="C3"></td>
-              <td>Number of Overlaped Phases ($k$)</td>
+              <td class="D3">Number of Overlaped Phases ($k$)</td>
               <td class="E3"></td>
-              <td>Output Current Ripple Compression</td>
+              <td class="F3">Output Current Ripple Compression</td>
               <td class="G3"></td>
             </tr>
             <tr>
@@ -56,27 +56,27 @@
             </tr>
             <tr>
               <td rowspan="3">Design Parameters</td>
-              <td>$$ \mathcal{R}_L $$</td>
+              <td class="B5">$$ \mathcal{R}_L $$</td>
               <td><input type="text" class="C5"></td>
-              <td>$$ LS $$</td>
+              <td class="D5">$$ LS $$</td>
               <td><input type="text" class="E5"></td>
-              <td>$$ Ll $$</td>
+              <td class="F5">$$ Ll $$</td>
               <td><input type="text" class="G5"></td>
             </tr>
             <tr>
-              <td>$$ RC $$</td>
+              <td class="B6">$$ RC $$</td>
               <td><input type="text" class="C6"></td>
-              <td>$$ LM $$</td>
+              <td class="D6">$$ LM $$</td>
               <td><input type="text" class="E6"></td>
-              <td>$$ Lu $$</td>
+              <td class="F6">$$ Lu $$</td>
               <td><input type="text" class="G6"></td>
             </tr>
             <tr>
-              <td>$$ \beta = \frac{RC}{RL} $$</td>
+              <td class="B7">$$ \beta = \frac{RC}{RL} $$</td>
               <td class="C7"></td>
-              <td>$$ \alpha = -\frac{LM}{LS} $$</td>
+              <td class="D7">$$ \alpha = -\frac{LM}{LS} $$</td>
               <td class="E7"></td>
-              <td>$$ \rho = -\frac{Lu}{Ll} $$</td>
+              <td class="F7">$$ \rho = -\frac{Lu}{Ll} $$</td>
               <td class="G7"></td>
             </tr>
             <tr>
@@ -154,128 +154,128 @@
             </tr>
             <tr>
               <td rowspan="10">Model Parameters</td>
-              <td>$$RL$$</td>
+              <td class="B10">$$RL$$</td>
               <td class="C10"></td> 
-              <td>$$\text{RL} = \frac{N^2}{L_S - L_M}$$</td>
+              <td class="D10">$$\text{RL} = \frac{N^2}{L_S - L_M}$$</td>
               <td class="E10"></td>
-              <td>$$\text{RL} = \frac{N^2(M-1)}{(M-1)L_l + ML_\mu}$$</td>
+              <td class="F10">$$\text{RL} = \frac{N^2(M-1)}{(M-1)L_l + ML_\mu}$$</td>
               <td class="G10"></td>
             </tr>
             <tr>
-              <td>$$ RC $$</td>
+              <td class="B11">$$ RC $$</td>
               <td class="C11"></td>
-              <td>$$ RC = \frac{-N^2 L_M}{(L_S - L_M)(L_S + (M-1)L_M)} $$</td>
+              <td class="D11">$$ RC = \frac{-N^2 L_M}{(L_S - L_M)(L_S + (M-1)L_M)} $$</td>
               <td class="E11"></td>
-              <td>$$ RC = \frac{-N^2 L_\mu}{L_l((M-1)L_l + M L_\mu)} $$</td>
+              <td class="F11">$$ RC = \frac{-N^2 L_\mu}{L_l((M-1)L_l + M L_\mu)} $$</td>
               <td class="G11"></td>
             </tr>
             <tr>
-              <td>$$ Ll = \frac{N^2}{R_L + M R_C} $$</td>
+              <td class="B12">$$ Ll = \frac{N^2}{R_L + M R_C} $$</td>
               <td class="C12"></td>
-              <td>$$ Ll = L_S + (M-1) L_M $$</td>
+              <td class="D12">$$ Ll = L_S + (M-1) L_M $$</td>
               <td class="E12"></td>
-              <td>$$ Ll $$</td>
+              <td class="F12">$$ Ll $$</td>
               <td class="G12"></td>
             </tr>
             <tr>
-              <td>$$ Lu = \frac{N^2 (M-1) R_C}{R_L (R_L + M R_C)} $$</td>
+              <td class="B13">$$ Lu = \frac{N^2 (M-1) R_C}{R_L (R_L + M R_C)} $$</td>
               <td class="C13"></td>
-              <td>$$ Lu = -(M-1) L_M $$</td>
+              <td class="D13">$$ Lu = -(M-1) L_M $$</td>
               <td class="E13"></td>
-              <td>$$ Lu $$</td>
+              <td class="F13">$$ Lu $$</td>
               <td class="G13"></td>
             </tr>
             <tr>
-              <td>$$ LS = \frac{N^2(R_L + (M-1) R_C)}{R_L (R_L + M R_C)} $$</td>
+              <td class="B14">$$ LS = \frac{N^2(R_L + (M-1) R_C)}{R_L (R_L + M R_C)} $$</td>
               <td class="C14"></td>
-              <td>$$ LS $$</td>
+              <td class="D14">$$ LS $$</td>
               <td class="E14"></td>
-              <td>$$ LS = L_\mu + L_l $$</td>
+              <td class="F14">$$ LS = L_\mu + L_l $$</td>
               <td class="G14"></td>
             </tr>
             <tr>
-              <td>$$ LM = \frac{-N^2 R_C}{R_L(R_L + M R_C)}$$</td>
+              <td class="B15">$$ LM = \frac{-N^2 R_C}{R_L(R_L + M R_C)}$$</td>
               <td class="C15"></td>
-              <td>$$ LM $$</td>
+              <td class="D15">$$ LM $$</td>
               <td class="E15"></td>
-              <td>$$ LM = -\frac{1}{M-1} L_\mu $$</td>
+              <td class="F15">$$ LM = -\frac{1}{M-1} L_\mu $$</td>
               <td class="G15"></td>
             </tr>
             <tr>
-              <td>$$ LL = \frac{1}{RL} $$</td>
+              <td class="B16">$$ LL = \frac{1}{RL} $$</td>
               <td class="C16"></td>
-              <td>$$ LL = \frac{1}{RL} $$</td>
+              <td class="D16">$$ LL = \frac{1}{RL} $$</td>
               <td class="E16"></td>
-              <td>$$ LL = \frac{1}{RL} $$</td>
+              <td class="F16">$$ LL = \frac{1}{RL} $$</td>
               <td class="G16"></td>
             </tr>
             <tr>
-              <td>$$ LC = \frac{1}{RC} $$</td>
+              <td class="B17">$$ LC = \frac{1}{RC} $$</td>
               <td class="C17"></td>
-              <td>$$ LC = \frac{1}{RC} $$</td>
+              <td class="D17">$$ LC = \frac{1}{RC} $$</td>
               <td class="E17"></td>
-              <td>$$ LC = \frac{1}{RC} $$</td>
+              <td class="F17">$$ LC = \frac{1}{RC} $$</td>
               <td class="G17"></td>
             </tr>
             <tr>
-              <td>$$ LmeasL *= \frac{R_L + (M-1) R_C}{R_L(R_L + M R_C)} $$</td>
+              <td class="B18">$$ LmeasL *= \frac{R_L + (M-1) R_C}{R_L(R_L + M R_C)} $$</td>
               <td class="C18"></td>
-              <td>$$ LmeasL *= \frac{R_L + (M-1) R_C}{R_L(R_L + M R_C)} $$</td>
+              <td class="D18">$$ LmeasL *= \frac{R_L + (M-1) R_C}{R_L(R_L + M R_C)} $$</td>
               <td class="E18"></td>
-              <td>$$ LmeasL *= \frac{R_L + (M-1) R_C}{R_L(R_L + M R_C)} $$</td>
+              <td class="F18">$$ LmeasL *= \frac{R_L + (M-1) R_C}{R_L(R_L + M R_C)} $$</td>
               <td class="G18"></td>
             </tr>
             <tr>
-              <td>$$ LmeasC *= \frac{1}{\frac{R_L}{M} + R_C} $$</td>
+              <td class="B19">$$ LmeasC *= \frac{1}{\frac{R_L}{M} + R_C} $$</td>
               <td class="C19"></td>
-              <td>$$ LmeasC *= \frac{1}{\frac{R_L}{M} + R_C} $$</td>
+              <td class="D19">$$ LmeasC *= \frac{1}{\frac{R_L}{M} + R_C} $$</td>
               <td class="E19"></td>
-              <td>$$ LmeasC *= \frac{1}{\frac{R_L}{M} + R_C} $$</td>
+              <td class="F19">$$ LmeasC *= \frac{1}{\frac{R_L}{M} + R_C} $$</td>
               <td class="G19"></td>
             </tr>
             <tr>
               <td>Loss</td>
-              <td>$$ \frac{(1-D)DMN^2}{(R_L + M R_C)(k + 1 - DM)(DM - k)} $$</td>
+              <td class="B20">$$ \frac{(1-D)DMN^2}{(R_L + M R_C)(k + 1 - DM)(DM - k)} $$</td>
               <td class="C20"></td>
-              <td>$$ \frac{(1-D)DM(L_S + L_M(M-1))}{(DM - k)(1 + k - DM)} $$</td>
+              <td class="D20">$$ \frac{(1-D)DM(L_S + L_M(M-1))}{(DM - k)(1 + k - DM)} $$</td>
               <td class="E20"></td>
-              <td>$$ \frac{(1-D)DML_l}{(DM-k)(1 + k - DM)} $$</td>
+              <td class="F20">$$ \frac{(1-D)DML_l}{(DM-k)(1 + k - DM)} $$</td>
               <td class="G20"></td>
             </tr>
             <tr>
               <td>Lpss</td>
-              <td>$$ \frac{N^2(1-D)}{-\frac{k^2R_C}{DM}-\frac{kR_C}{DM} + 2kR_C - DMR_C + R_C - DR_L + R_L} $$</td>
+              <td class="B21">$$ \frac{N^2(1-D)}{-\frac{k^2R_C}{DM}-\frac{kR_C}{DM} + 2kR_C - DMR_C + R_C - DR_L + R_L} $$</td>
               <td class="C21"></td>
-              <td>$$ \frac{(L_S - L_M)(L_S + (M-1)L_M)}{L_S + ((M-2k-2) + \frac{k(k+1)}{MD} + \frac{MD(M-2k-1)+k(k+1)}{M(1-D)} L_M)} $$</td>
+              <td class="D21">$$ \frac{(L_S - L_M)(L_S + (M-1)L_M)}{L_S + ((M-2k-2) + \frac{k(k+1)}{MD} + \frac{MD(M-2k-1)+k(k+1)}{M(1-D)} L_M)} $$</td>
               <td class="E21"></td>
-              <td>$$ \frac{DM(1-D)((M-1)L_l + ML_\mu)L_l}{DM(1-D)(M-1)L_l + (DM(1-DM)-k^2-k+2DMk)L_\mu} $$</td>
+              <td class="F21">$$ \frac{DM(1-D)((M-1)L_l + ML_\mu)L_l}{DM(1-D)(M-1)L_l + (DM(1-DM)-k^2-k+2DMk)L_\mu} $$</td>
               <td class="G21"></td>
             </tr>
             <tr>
               <td>Lotr</td>
-              <td>$$ \frac{N^2}{M(R_L + M R_C)} $$</td>
+              <td class="B22">$$ \frac{N^2}{M(R_L + M R_C)} $$</td>
               <td class="C22"></td>
-              <td>$$ \frac{L_S + (M-1) L_M}{M} $$</td>
+              <td class="D22">$$ \frac{L_S + (M-1) L_M}{M} $$</td>
               <td class="E22"></td>
-              <td>$$ \frac{L_l}{M} $$</td>
+              <td class="F22">$$ \frac{L_l}{M} $$</td>
               <td class="G22"></td>
             </tr>
             <tr>
               <td>Lptr</td>
-              <td>$$ \frac{N^2}{R_L + M R_C} $$</td>
+              <td class="B23">$$ \frac{N^2}{R_L + M R_C} $$</td>
               <td class="C23"></td>
-              <td>$$ L_S + (M-1) L_M $$</td>
+              <td class="D23">$$ L_S + (M-1) L_M $$</td>
               <td class="E23"></td>
-              <td>$$ L_l $$</td>
+              <td class="F23">$$ L_l $$</td>
               <td class="G23"></td>
             </tr>
             <tr>
               <td>Ripple Ratio</td>
-              <td>$$ \frac{-\frac{k^2\beta}{DM} - \frac{k\beta}{DM} + 2k\beta - DM \beta + \beta - D + 1}{(1-D)(1 + M\beta)} $$</td>
+              <td class="B24">$$ \frac{-\frac{k^2\beta}{DM} - \frac{k\beta}{DM} + 2k\beta - DM \beta + \beta - D + 1}{(1-D)(1 + M\beta)} $$</td>
               <td class="C24"></td>
-              <td>$$ \frac{1 - ((M-2k-2) + \frac{k(k+1)}{MD} + \frac{MD(M-2k-1) + k(k+1)}{M(1-D)})\alpha}{1+\alpha} $$</td>
+              <td class="D24">$$ \frac{1 - ((M-2k-2) + \frac{k(k+1)}{MD} + \frac{MD(M-2k-1) + k(k+1)}{M(1-D)})\alpha}{1+\alpha} $$</td>
               <td class="E24"></td>
-              <td>$$ \frac{DM(1-D)(M-1) + (DM(1-DM)-k^2-k+2DMk)\rho}{DM(1-D)(M-1+M_\rho)} $$</td>
+              <td class="F24">$$ \frac{DM(1-D)(M-1) + (DM(1-DM)-k^2-k+2DMk)\rho}{DM(1-D)(M-1+M_\rho)} $$</td>
               <td class="G24"></td>
             </tr>
           </tbody>
