@@ -18,3 +18,21 @@
     padding: 0.25em;
     font-size: 80%;
 }
+
+.credits {
+    margin: 4em auto;
+    margin-top: 4em;
+    text-align: center;
+    max-width: 800px;
+}
+
+.credits a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+.credits a:hover {
+    font-size: 120%;
+}
