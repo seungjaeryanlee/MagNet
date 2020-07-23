@@ -64,7 +64,7 @@
               <td><input type="text" class="G5"></td>
             </tr>
             <tr>
-              <td class="B6">$$ RC $$</td>
+              <td class="B6">$$ \mathcal{R}_C $$</td>
               <td><input type="text" class="C6"></td>
               <td class="D6">$$ LM $$</td>
               <td><input type="text" class="E6"></td>
@@ -72,7 +72,7 @@
               <td><input type="text" class="G6"></td>
             </tr>
             <tr>
-              <td class="B7">$$ \beta = \frac{RC}{RL} $$</td>
+              <td class="B7">$$ \beta = \frac{\mathcal{R}_C}{\mathcal{R}_L} $$</td>
               <td class="C7"></td>
               <td class="D7">$$ \alpha = -\frac{LM}{LS} $$</td>
               <td class="E7"></td>
@@ -91,10 +91,10 @@
                 \end{bmatrix}
                 =
                 \begin{bmatrix}
-                R_L + R_C & R_C & \ldots & R_C \\
-                R_C & R_L + R_C & \ldots & R_C \\
+                R_L + \mathcal{R}_C & \mathcal{R}_C & \ldots & \mathcal{R}_C \\
+                \mathcal{R}_C & R_L + \mathcal{R}_C & \ldots & \mathcal{R}_C \\
                 \vdots & \vdots & \ddots & \vdots \\
-                R_C & \ldots & R_C & R_L + R_C \\
+                \mathcal{R}_C & \ldots & \mathcal{R}_C & R_L + \mathcal{R}_C \\
                 \end{bmatrix}
                 \begin{bmatrix}
                 v_1 \\
@@ -154,23 +154,23 @@
             </tr>
             <tr>
               <td rowspan="10">Model Parameters</td>
-              <td class="B10">$$RL$$</td>
+              <td class="B10">$$\mathcal{R}_L$$</td>
               <td class="C10"></td> 
-              <td class="D10">$$\text{RL} = \frac{N^2}{L_S - L_M}$$</td>
+              <td class="D10">$$\mathcal{R}_L = \frac{N^2}{L_S - L_M}$$</td>
               <td class="E10"></td>
-              <td class="F10">$$\text{RL} = \frac{N^2(M-1)}{(M-1)L_l + ML_\mu}$$</td>
+              <td class="F10">$$\mathcal{R}_L = \frac{N^2(M-1)}{(M-1)L_l + ML_\mu}$$</td>
               <td class="G10"></td>
             </tr>
             <tr>
-              <td class="B11">$$ RC $$</td>
+              <td class="B11">$$ \mathcal{R}_C $$</td>
               <td class="C11"></td>
-              <td class="D11">$$ RC = \frac{-N^2 L_M}{(L_S - L_M)(L_S + (M-1)L_M)} $$</td>
+              <td class="D11">$$ \mathcal{R}_C = \frac{-N^2 L_M}{(L_S - L_M)(L_S + (M-1)L_M)} $$</td>
               <td class="E11"></td>
-              <td class="F11">$$ RC = \frac{-N^2 L_\mu}{L_l((M-1)L_l + M L_\mu)} $$</td>
+              <td class="F11">$$ \mathcal{R}_C = \frac{-N^2 L_\mu}{L_l((M-1)L_l + M L_\mu)} $$</td>
               <td class="G11"></td>
             </tr>
             <tr>
-              <td class="B12">$$ Ll = \frac{N^2}{R_L + M R_C} $$</td>
+              <td class="B12">$$ Ll = \frac{N^2}{R_L + M \mathcal{R}_C} $$</td>
               <td class="C12"></td>
               <td class="D12">$$ Ll = L_S + (M-1) L_M $$</td>
               <td class="E12"></td>
@@ -178,7 +178,7 @@
               <td class="G12"></td>
             </tr>
             <tr>
-              <td class="B13">$$ Lu = \frac{N^2 (M-1) R_C}{R_L (R_L + M R_C)} $$</td>
+              <td class="B13">$$ Lu = \frac{N^2 (M-1) \mathcal{R}_C}{R_L (R_L + M \mathcal{R}_C)} $$</td>
               <td class="C13"></td>
               <td class="D13">$$ Lu = -(M-1) L_M $$</td>
               <td class="E13"></td>
@@ -186,7 +186,7 @@
               <td class="G13"></td>
             </tr>
             <tr>
-              <td class="B14">$$ LS = \frac{N^2(R_L + (M-1) R_C)}{R_L (R_L + M R_C)} $$</td>
+              <td class="B14">$$ LS = \frac{N^2(R_L + (M-1) \mathcal{R}_C)}{R_L (R_L + M \mathcal{R}_C)} $$</td>
               <td class="C14"></td>
               <td class="D14">$$ LS $$</td>
               <td class="E14"></td>
@@ -194,7 +194,7 @@
               <td class="G14"></td>
             </tr>
             <tr>
-              <td class="B15">$$ LM = \frac{-N^2 R_C}{R_L(R_L + M R_C)}$$</td>
+              <td class="B15">$$ LM = \frac{-N^2 \mathcal{R}_C}{R_L(R_L + M \mathcal{R}_C)}$$</td>
               <td class="C15"></td>
               <td class="D15">$$ LM $$</td>
               <td class="E15"></td>
@@ -202,40 +202,40 @@
               <td class="G15"></td>
             </tr>
             <tr>
-              <td class="B16">$$ LL = \frac{1}{RL} $$</td>
+              <td class="B16">$$ LL = \frac{1}{\mathcal{R}_L} $$</td>
               <td class="C16"></td>
-              <td class="D16">$$ LL = \frac{1}{RL} $$</td>
+              <td class="D16">$$ LL = \frac{1}{\mathcal{R}_L} $$</td>
               <td class="E16"></td>
-              <td class="F16">$$ LL = \frac{1}{RL} $$</td>
+              <td class="F16">$$ LL = \frac{1}{\mathcal{R}_L} $$</td>
               <td class="G16"></td>
             </tr>
             <tr>
-              <td class="B17">$$ LC = \frac{1}{RC} $$</td>
+              <td class="B17">$$ LC = \frac{1}{\mathcal{R}_C} $$</td>
               <td class="C17"></td>
-              <td class="D17">$$ LC = \frac{1}{RC} $$</td>
+              <td class="D17">$$ LC = \frac{1}{\mathcal{R}_C} $$</td>
               <td class="E17"></td>
-              <td class="F17">$$ LC = \frac{1}{RC} $$</td>
+              <td class="F17">$$ LC = \frac{1}{\mathcal{R}_C} $$</td>
               <td class="G17"></td>
             </tr>
             <tr>
-              <td class="B18">$$ LmeasL *= \frac{R_L + (M-1) R_C}{R_L(R_L + M R_C)} $$</td>
+              <td class="B18">$$ LmeasL *= \frac{R_L + (M-1) \mathcal{R}_C}{R_L(R_L + M \mathcal{R}_C)} $$</td>
               <td class="C18"></td>
-              <td class="D18">$$ LmeasL *= \frac{R_L + (M-1) R_C}{R_L(R_L + M R_C)} $$</td>
+              <td class="D18">$$ LmeasL *= \frac{R_L + (M-1) \mathcal{R}_C}{R_L(R_L + M \mathcal{R}_C)} $$</td>
               <td class="E18"></td>
-              <td class="F18">$$ LmeasL *= \frac{R_L + (M-1) R_C}{R_L(R_L + M R_C)} $$</td>
+              <td class="F18">$$ LmeasL *= \frac{R_L + (M-1) \mathcal{R}_C}{R_L(R_L + M \mathcal{R}_C)} $$</td>
               <td class="G18"></td>
             </tr>
             <tr>
-              <td class="B19">$$ LmeasC *= \frac{1}{\frac{R_L}{M} + R_C} $$</td>
+              <td class="B19">$$ LmeasC *= \frac{1}{\frac{R_L}{M} + \mathcal{R}_C} $$</td>
               <td class="C19"></td>
-              <td class="D19">$$ LmeasC *= \frac{1}{\frac{R_L}{M} + R_C} $$</td>
+              <td class="D19">$$ LmeasC *= \frac{1}{\frac{R_L}{M} + \mathcal{R}_C} $$</td>
               <td class="E19"></td>
-              <td class="F19">$$ LmeasC *= \frac{1}{\frac{R_L}{M} + R_C} $$</td>
+              <td class="F19">$$ LmeasC *= \frac{1}{\frac{R_L}{M} + \mathcal{R}_C} $$</td>
               <td class="G19"></td>
             </tr>
             <tr>
               <td>Loss</td>
-              <td class="B20">$$ \frac{(1-D)DMN^2}{(R_L + M R_C)(k + 1 - DM)(DM - k)} $$</td>
+              <td class="B20">$$ \frac{(1-D)DMN^2}{(R_L + M \mathcal{R}_C)(k + 1 - DM)(DM - k)} $$</td>
               <td class="C20"></td>
               <td class="D20">$$ \frac{(1-D)DM(L_S + L_M(M-1))}{(DM - k)(1 + k - DM)} $$</td>
               <td class="E20"></td>
@@ -244,7 +244,7 @@
             </tr>
             <tr>
               <td>Lpss</td>
-              <td class="B21">$$ \frac{N^2(1-D)}{-\frac{k^2R_C}{DM}-\frac{kR_C}{DM} + 2kR_C - DMR_C + R_C - DR_L + R_L} $$</td>
+              <td class="B21">$$ \frac{N^2(1-D)}{-\frac{k^2\mathcal{R}_C}{DM}-\frac{k\mathcal{R}_C}{DM} + 2k\mathcal{R}_C - DM\mathcal{R}_C + \mathcal{R}_C - DR_L + R_L} $$</td>
               <td class="C21"></td>
               <td class="D21">$$ \frac{(L_S - L_M)(L_S + (M-1)L_M)}{L_S + ((M-2k-2) + \frac{k(k+1)}{MD} + \frac{MD(M-2k-1)+k(k+1)}{M(1-D)} L_M)} $$</td>
               <td class="E21"></td>
@@ -253,7 +253,7 @@
             </tr>
             <tr>
               <td>Lotr</td>
-              <td class="B22">$$ \frac{N^2}{M(R_L + M R_C)} $$</td>
+              <td class="B22">$$ \frac{N^2}{M(R_L + M \mathcal{R}_C)} $$</td>
               <td class="C22"></td>
               <td class="D22">$$ \frac{L_S + (M-1) L_M}{M} $$</td>
               <td class="E22"></td>
@@ -262,7 +262,7 @@
             </tr>
             <tr>
               <td>Lptr</td>
-              <td class="B23">$$ \frac{N^2}{R_L + M R_C} $$</td>
+              <td class="B23">$$ \frac{N^2}{R_L + M \mathcal{R}_C} $$</td>
               <td class="C23"></td>
               <td class="D23">$$ L_S + (M-1) L_M $$</td>
               <td class="E23"></td>
@@ -280,7 +280,7 @@
             </tr>
             <tr>
               <td>Phi_LDC/Iout</td>
-              <td class="B25">$$ \frac{N}{M(R_L + M R_C)} $$</td>
+              <td class="B25">$$ \frac{N}{M(R_L + M \mathcal{R}_C)} $$</td>
               <td class="C25"></td>
               <td class="D25">$$ \frac{L_S+(M-1)L_M}{MN} $$</td>
               <td class="E25"></td>
@@ -289,7 +289,7 @@
             </tr>
             <tr>
               <td>Phi_CDC/Iout</td>
-              <td class="B26">$$ \frac{N}{R_L + M R_C} $$</td>
+              <td class="B26">$$ \frac{N}{R_L + M \mathcal{R}_C} $$</td>
               <td class="C26"></td>
               <td class="D26">$$ \frac{L_S+(M-1)L_M}{N} $$</td>
               <td class="E26"></td>
