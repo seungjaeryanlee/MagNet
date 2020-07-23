@@ -132,4 +132,20 @@ function update() {
     $(".G22").text(G22);
     $(".G23").text(G23);
     $(".G24").text(G24);
+
+    // Compute Phi_LDC/Iout and Phi_CDC/Iout
+    let C25 = G2/E2/(C5+E2*C6);
+    let C26 = C25*E2;
+    let E25 = (E5+(E2-1)*E6)/E2/G2;
+    let E26 = E25*E2;
+    let G25 = G23/E2/G2;
+    let G26 = G5/G2;
+
+    // Update numbers
+    $(".C25").text(C25);
+    $(".C26").text(C26);
+    $(".E25").text(E25);
+    $(".E26").text(E26);
+    $(".G25").text(G25);
+    $(".G26").text(G26);
 }
