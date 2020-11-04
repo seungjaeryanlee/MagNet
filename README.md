@@ -1,4 +1,4 @@
-# MagNet
+![MagNet Logo](images/magnet_logo.jpg)
 
 ![PyPI](https://img.shields.io/pypi/v/mag-net?color=blue)
 ![wandb](https://img.shields.io/badge/wandb-metric-yellow)
@@ -51,3 +51,9 @@ If you used MagNet, please cite us with the following BibTeX item.
   year={2020}
 }
 ```
+
+## Sponsors
+
+This work is sponsored by the ARPA-E DIFFERENTIATE Program.
+
+<img src="images/arpae.jpg" width=300>
