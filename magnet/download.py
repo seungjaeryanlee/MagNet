@@ -1,7 +1,10 @@
+import glob
 import os
 import tarfile
 
 import gdown
+import numpy as np
+import pandas as pd
 
 
 def download_dataset(download_path: str = "data/"):
@@ -30,6 +33,29 @@ def download_dataset(download_path: str = "data/"):
 
     os.remove(zipped_file_path)
     print("[MagNet] Cleanup successful.")
+
+    print("[MagNet] Preprocessing dataset. This may take a few minutes.")
+    csv_paths = glob.glob(os.path.join(download_path, "clean/*.csv"))
+    datas = []
+    for csv_path in csv_paths:
+        # Ignore the meta-info CSV
+        if "info.csv" in csv_path:
+            continue
+
+        df = pd.read_csv(csv_path, header=None)
+        sample_period, sample_length = df.iloc[0]
+
+        # TODO(seungjaeryanlee): Only support data with sample length of 8192
+        if sample_length != 8192:
+            continue
+
+        data = df.iloc[1:].values.astype(np.float64)
+        data = np.split(data, int(data.shape[0] / sample_length))
+        data = np.array(data)
+        datas.append(data)
+    datas = np.concatenate(datas)
+    np.save(os.path.join(download_path, "dataset.npy"), datas)
+    print("[MagNet] Preprocessing finished successfully.")
 
     print("███╗   ███╗ █████╗  ██████╗ ███╗   ██╗███████╗████████╗")
     print("████╗ ████║██╔══██╗██╔════╝ ████╗  ██║██╔════╝╚══██╔══╝")
