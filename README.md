@@ -25,7 +25,7 @@ The `mag-net` package will soon support download and use of trained models. Plea
 
 ### Use Dataset
 
-Currently, the `mag-net` package supports **PyTorch** natively by providing a PyTorch dataset. You can get the dataset the following way:
+The `mag-net` package supports **PyTorch** natively by providing a PyTorch dataset. You can get the dataset the following way:
 
 ```python
 import magnet
@@ -35,16 +35,23 @@ magnet.get_pytorch_dataset(download_path="data/", download=True)
 
 With `download=True`, the data will automatically be downloaded if it does not exist yet locally. 
 
-For non-PyTorch use cases, you must download the dataset manually. The following code will download the dataset to `data/` directory.
+We also support **TensorFlow** natively by providing a `tf.data` style dataset. You can get the dataset the following way:
+
+```python
+import magnet
+
+magnet.get_tensorflow_dataset(download_path="data/", download=True)
+```
+
+With `download=True`, the data will automatically be downloaded if it does not exist yet locally. 
+
+For other use cases, you must download the dataset manually. The following code will download the dataset to `data/` directory.
 
 ```python
 import magnet
 
 magnet.download_dataset(download_path="data/")
 ```
-
-The `mag-net` package will soon support PyTorch-style and TensorFlow-style datasets. Please look forward to it!
-
 
 
 ## How to Cite
