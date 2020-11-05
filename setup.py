@@ -9,7 +9,7 @@ with open('requirements.txt') as f:
 
 setuptools.setup(
     name="mag-net",
-    version="0.0.2",
+    version="0.0.3",
     author="Seungjae Ryan Lee",
     author_email="seungjaeryanlee@gmail.com",
     description="MagNet is a large-scale dataset designed to enable researchers modeling magnetic core loss using machine learning to accelerate the design process of power electronics.",
