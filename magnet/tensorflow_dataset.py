@@ -10,7 +10,7 @@ except ImportError:
     pass
 
 
-def get_tensorflow_dataset(download_path: str = "data/", download=True):
+def TensorFlowDataset(download_path: str = "data/", download=True):
     """
     Return a TensorFlow-style dataset.
 

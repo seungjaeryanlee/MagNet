@@ -10,7 +10,7 @@ except ImportError:
     pass
 
 
-def get_pytorch_dataset(download_path: str = "data/", download=True):
+def PyTorchDataset(download_path: str = "data/", download=True):
     """
     Return a PyTorch-style dataset.
 

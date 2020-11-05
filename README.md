@@ -30,7 +30,7 @@ The `mag-net` package supports **PyTorch** natively by providing a PyTorch datas
 ```python
 import magnet
 
-magnet.get_pytorch_dataset(download_path="data/", download=True)
+dataset = magnet.PyTorchDataset(download_path="data/", download=True)
 ```
 
 With `download=True`, the data will automatically be downloaded if it does not exist yet locally. 
@@ -40,7 +40,7 @@ We also support **TensorFlow** natively by providing a `tf.data` style dataset. 
 ```python
 import magnet
 
-magnet.get_tensorflow_dataset(download_path="data/", download=True)
+dataset = magnet.TensorFlowDataset(download_path="data/", download=True)
 ```
 
 With `download=True`, the data will automatically be downloaded if it does not exist yet locally. 
