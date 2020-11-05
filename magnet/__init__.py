@@ -1,9 +1,12 @@
-from .download import *
-from .pytorch_dataset import *
-from .tensorflow_dataset import *
+from .models import pytorch
+from .download import download_dataset
+from .pytorch_dataset import PyTorchDataset
+from .tensorflow_dataset import TensorFlowDataset
+
 
 __all__ = [
     download_dataset,
+    pytorch,
     PyTorchDataset,
     TensorFlowDataset,
 ]
