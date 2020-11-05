@@ -1,9 +1,13 @@
 import os
 
 import numpy as np
-import torch
 
 from .download import download_dataset
+
+try:
+    import torch
+except ImportError:
+    pass
 
 
 def get_pytorch_dataset(download_path: str = "data/", download=True):
