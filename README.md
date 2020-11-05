@@ -21,7 +21,17 @@ pip install mag-net
 
 ### Use Trained Model
 
-The `mag-net` package will soon support download and use of trained models. Please look forward to it!
+The `mag-net` package has **PyTorch** pretrained models that you can load and use.
+
+```python
+import magnet
+
+magnet.models.pytorch.MiniLSTM(pretrained=True)
+```
+
+If you want to train the model yourself and want the model without the pretrained weights, you can set `pretrained=False`.
+
+We will publish more trained models soon. Please look forward to it!
 
 ### Use Dataset
 
