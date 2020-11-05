@@ -24,4 +24,8 @@ setuptools.setup(
     ],
     python_requires='>=3.6',
     install_requires=required,
+    include_package_data=True,
+    package_data={'': [
+        'models/pytorch/pretrained_weights/*.pt',
+    ]},
 )
