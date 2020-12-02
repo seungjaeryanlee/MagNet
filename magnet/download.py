@@ -21,9 +21,8 @@ def download_dataset(download_path: str = "data/"):
     """
     if not os.path.exists(download_path):
         os.makedirs(download_path)
-
-    url = "https://drive.google.com/uc?id=1fUfSH3odWmr5ORc3iZk3hPNbRr61f4Ls"
-    zipped_file_path = os.path.join(download_path, "magnet.tar.gz")
+    url = "https://drive.google.com/uc?id=1OJyehwedyFBfvNJUavvIrhckiYXcTo0Q"
+    zipped_file_path = os.path.join(download_path, "20201118.tar.gz")
     gdown.download(url, zipped_file_path, quiet=False)
     print("[MagNet] Dataset downloaded successfully.")
 
@@ -35,7 +34,7 @@ def download_dataset(download_path: str = "data/"):
     print("[MagNet] Cleanup successful.")
 
     print("[MagNet] Preprocessing dataset. This may take a few minutes.")
-    csv_paths = glob.glob(os.path.join(download_path, "clean/*.csv"))
+    csv_paths = glob.glob(os.path.join(download_path, "dataset/*.csv"))
     datas = []
     for csv_path in csv_paths:
         # Ignore the meta-info CSV
@@ -45,8 +44,10 @@ def download_dataset(download_path: str = "data/"):
         df = pd.read_csv(csv_path, header=None)
         sample_period, sample_length = df.iloc[0]
 
-        # TODO(seungjaeryanlee): Only support data with sample length of 8192
+        # TODO(seungjaeryanlee): Support data with different sample length (by zero padding?)
+        # Currently, data_trap_1k, 2k, 5k have sample length 8000 instead of 8192
         if sample_length != 8192:
+            print(f"[MagNet] WARNING: {csv_path} has sample length {sample_length}, which is not the expected 8192.")
             continue
 
         data = df.iloc[1:].values.astype(np.float64)
