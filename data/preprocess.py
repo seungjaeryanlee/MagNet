@@ -11,20 +11,19 @@ import numpy as np
 from tqdm import tqdm
 
 
-def preprocess(raw_data_dir="raw/", clean_data_dir="clean/"):
+def preprocess(raw_data_dir="RawDataLowFreq/", clean_data_dir="RawDataLowFreqClean/"):
     data_infos = []
     print(f"Loading raw data from '{raw_data_dir}' to and saving clean data to '{clean_data_dir}'...")
     for filename in tqdm(sorted(glob.glob(f"{raw_data_dir}/I*.csv"))):
-        p = re.search("(I|V)\((.*)_(.*)_(.*)\)", filename)
+        p = re.search("(I|V)\((.*)_(.*)\)", filename)
         wave_type = p.group(1)
         wave_shape = p.group(2)
         wave_freq = p.group(3)
-        wave_cond = p.group(4)
 
         # Load CSV pair
-        mat_i = np.loadtxt(open(f"{raw_data_dir}/I({wave_shape}_{wave_freq}_{wave_cond}).csv", "rb"), delimiter=",")
-        mat_v = np.loadtxt(open(f"{raw_data_dir}/V({wave_shape}_{wave_freq}_{wave_cond}).csv", "rb"), delimiter=",")
-        assert mat_i.shape == mat_v.shape, f"Received two CSV files with different shapes - {mat_i.shape} and {mat_v.shape} for I|V({wave_shape}_{wave_freq}_{wave_cond}).csv"
+        mat_i = np.loadtxt(open(f"{raw_data_dir}/I({wave_shape}_{wave_freq}).csv", "rb"), delimiter=",")
+        mat_v = np.loadtxt(open(f"{raw_data_dir}/V({wave_shape}_{wave_freq}).csv", "rb"), delimiter=",")
+        assert mat_i.shape == mat_v.shape, f"Received two CSV files with different shapes - {mat_i.shape} and {mat_v.shape} for I|V({wave_shape}_{wave_freq}).csv"
         num_samples, sample_length = mat_v.shape
         # assert sample_length == 8192, f"Expected sample length of 8192 but got {sample_length}"
 
@@ -48,13 +47,13 @@ def preprocess(raw_data_dir="raw/", clean_data_dir="clean/"):
 
         # Save as CSV
         np.savetxt(
-            f"{clean_data_dir}/data_{wave_shape}_{wave_freq}_{wave_cond}.csv",
+            f"{clean_data_dir}/data_{wave_shape}_{wave_freq}.csv",
             clean_mat,
             delimiter=",",
             header=f"2 us,{sample_length}",
             comments='',
         )
-        data_info = [f"data_{wave_shape}_{wave_freq}_{wave_cond}.csv", wave_shape, wave_freq, wave_cond, num_samples, "2 us", sample_length]
+        data_info = [f"data_{wave_shape}_{wave_freq}.csv", wave_shape, wave_freq, num_samples, "2 us", sample_length]
         data_infos.append(data_info)
 
     data_infos = np.vstack(data_infos)
@@ -62,7 +61,7 @@ def preprocess(raw_data_dir="raw/", clean_data_dir="clean/"):
         f"{clean_data_dir}/info.csv",
         data_infos,
         delimiter=",",
-        header="filename,shape,frequency,condition,num_samples,sample_period,sample_length",
+        header="filename,shape,frequency,num_samples,sample_period,sample_length",
         comments="",
         fmt="%s",
     )
