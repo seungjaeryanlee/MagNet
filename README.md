@@ -68,14 +68,18 @@ magnet.download_dataset(download_path="data/")
 
 If you used MagNet, please cite us with the following BibTeX item.
 
-<!-- TODO: Update once COMPEL 2020 happens -->
+<!-- TODO: Update once dataset paper is published. -->
 
 ```
-@INPROCEEDINGS{MagNet,
-  author={H. {Li} and S. {Lee} and M. {Luo} and C. {Sullivan} and Y. {Chen} and M. {Chen}},
-  booktitle={2020 Twenty-first IEEE Workshop on Control and Modeling for Power Electronics (COMPEL)}, 
+@INPROCEEDINGS{9265869,
+  author={H. {Li} and S. R. {Lee} and M. {Luo} and C. R. {Sullivan} and Y. {Chen} and M. {Chen}},
+  booktitle={2020 IEEE 21st Workshop on Control and Modeling for Power Electronics (COMPEL)}, 
   title={MagNet: A Machine Learning Framework for Magnetic Core Loss Modeling}, 
-  year={2020}
+  year={2020},
+  volume={},
+  number={},
+  pages={1-8},
+  doi={10.1109/COMPEL49091.2020.9265869}
 }
 ```
 
